@@ -7,14 +7,15 @@ public interface State {
 
     int initTransaction();
 
-    boolean readCardDetailsAndPin(Card card);
+    boolean readCardDetailsAndPin(Card card, String pin);
 
-    int dispenseCash(int transactionId);
+    int dispenseCash(Card card, int transactionId, int amount);
 
     void ejectCard();
 
-    boolean readCashWithdrawDetails(int transactionId, int amount);
+    boolean readCashWithdrawDetails(Card card,int transactionId, int amount) throws IllegalAccessException;
 
+    boolean cancelTransaction(int transactionId);
     AtmState getState();
 
 }
